@@ -16,6 +16,17 @@
   }
 }
 
+@layer utilities {
+  .message-selected {
+    background-color: rgb(198, 221, 252);
+    border-left-color: rgb(29 78 216);
+    border-left-width: 2px; 
+    strong {
+      @apply text-blue-700
+    }
+  }
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -25,3 +36,4 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
