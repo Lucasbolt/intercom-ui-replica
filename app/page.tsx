@@ -421,7 +421,7 @@ export default function Home() {
 
                 <div className="flex flex-row items-center space-x-2 pt-6">
                   <img className="h-6 w-6 rounded-full bg-blue-500" src="images/lucas.jpg"></img>
-                  <h3 className="truncate text-sm text-black">I've got some issues with sending email</h3>
+                  <h3 className="truncate text-sm text-black">I have some issues sending an email</h3>
                 </div>
               </a>
 
@@ -447,7 +447,7 @@ export default function Home() {
 
                 <div className="flex flex-row items-center space-x-2 pt-6">
                   <img className="h-6 w-6 rounded-full bg-blue-500" src="images/lucas.jpg"></img>
-                  <h3 className="truncate text-sm text-black">I've got some issues with sending email</h3>
+                  <h3 className="truncate text-sm text-black">I have some issues sending an email</h3>
                 </div>
               </div>
 
@@ -473,7 +473,7 @@ export default function Home() {
 
                 <div className="flex flex-row items-center space-x-2 pt-6">
                   <img className="h-6 w-6 rounded-full bg-blue-500" src="images/lucas.jpg"></img>
-                  <h3 className="truncate text-sm text-black">I've got some issues with sending email</h3>
+                  <h3 className="truncate text-sm text-black">I have some issues sending an email</h3>
                 </div>
               </div>
 
@@ -499,7 +499,7 @@ export default function Home() {
 
                 <div className="flex flex-row items-center space-x-2 pt-6">
                   <img className="h-6 w-6 rounded-full bg-blue-500" src="images/lucas.jpg"></img>
-                  <h3 className="truncate text-sm text-black">I've got some issues with sending email</h3>
+                  <h3 className="truncate text-sm text-black">I have some issues sending an email</h3>
                 </div>
               </div>
 
@@ -525,7 +525,7 @@ export default function Home() {
 
                 <div className="flex flex-row items-center space-x-2 pt-6">
                   <img className="h-6 w-6 rounded-full bg-blue-500" src="images/lucas.jpg"></img>
-                  <h3 className="truncate text-sm text-black">I've got some issues with sending email</h3>
+                  <h3 className="truncate text-sm text-black">I have some issues sending an email</h3>
                 </div>
               </div>
 
@@ -551,7 +551,7 @@ export default function Home() {
 
                 <div className="flex flex-row items-center space-x-2 pt-6">
                   <img className="h-6 w-6 rounded-full bg-blue-500" src="images/lucas.jpg"></img>
-                  <h3 className="truncate text-sm text-black">I've got some issues with sending email</h3>
+                  <h3 className="truncate text-sm text-black">I have some issues sending an email</h3>
                 </div>
               </div>
 
@@ -577,7 +577,7 @@ export default function Home() {
 
                 <div className="flex flex-row items-center space-x-2 pt-6">
                   <img className="h-6 w-6 rounded-full bg-blue-500" src="images/lucas.jpg"></img>
-                  <h3 className="truncate text-sm text-black">I've got some issues with sending email</h3>
+                  <h3 className="truncate text-sm text-black">I have some issues sending an email</h3>
                 </div>
               </div>
             </div>
