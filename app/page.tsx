@@ -396,6 +396,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
             <div id="message-nav" className="mt-2 flex h-screen flex-col space-y-1 overflow-y-auto pb-32 pt-4 md:pb-2">
               <a
                 id="message-container"
@@ -583,12 +584,13 @@ export default function Home() {
             </div>
           </div>
 
+          {/* message-chat-inbox-section */}
           <div
-            className="hidden h-screen w-full  flex-auto flex-col justify-center bg-gray-200 md:flex lg:flex-auto "
+            className="relative hidden h-screen flex-none flex-col justify-center bg-gray-200 md:flex lg:flex-auto"
             id="chat-box"
             ref={chatRef}
           >
-            <div className="flex h-16 w-full flex-row items-center justify-between bg-white p-4 py-2">
+            <div className="relative z-10 flex h-16 w-full  flex-none flex-row items-center justify-evenly self-center bg-white p-4 py-2 sm:justify-between">
               <div className="flex flex-col">
                 <strong className="text-sm font-semibold hover:text-blue-700">Lucas Mmaduabuchi</strong>
 
@@ -599,252 +601,228 @@ export default function Home() {
                 ></input>
               </div>
 
-              <div className="flex flex-row items-center space-x-2">
+              <div className="flex flex-row items-center space-x-2 rounded-md border-2 p-1 shadow">
                 <svg
-                  className="h-6"
+                  className="h-4 w-4 text-gray-700"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  stroke-width="1.5"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
-                  ></path>
-                </svg>
-                <img src="images/lucas.jpg" alt="Lucas" className="h-6 w-6 rounded-full" />
-                <svg
-                  className="h-6 w-6 hover:cursor-pointer hover:text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-                  ></path>
-                </svg>
-                <svg
-                  className="h-6 w-6 hover:cursor-pointer hover:text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                     d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                   ></path>
                 </svg>
-                <svg
-                  className="h-6 w-6 hover:cursor-pointer hover:text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
-                </svg>
+
+                <p className="text-sm text-gray-700">Reply in 15m</p>
               </div>
             </div>
 
-            {/* <div className="flex-auto flex flex-col h-screen bg-whatsapp pb-32 md:pb-0">
-              <div className="flex-auto overflow-y-auto  flex flex-col">
-                hello
-                hi
-                hey
-                hola
-                welcome
-              </div>
-
-              <div className="h-40 p-4 bg-white  rounded-xl shadow shadow-slate-50 border-2 relative mx-2 mb-2 mt-auto" id="message-box">
-                  <div className="flex flex-row gap-8">
-                    <h3 className="texl-sm font-semibold hover:underline-offset-[10px] hover:underline hover:text-blue-700 decoration-4">Reply</h3>
-                  </div>
-              </div>
-            </div> */}
-
-            <div className="flex h-screen flex-auto flex-col bg-whatsapp">
-              <div className="flex-auto space-y-4 overflow-y-auto p-4">
-                <p>hello</p>
-                <p>hi</p>
-                <p>hey</p>
-                <p>hola</p>
-                <p>welcome</p>
-              </div>
-
-              <div
-                className="self-centers mx-2 mb-2 hidden h-40 justify-between rounded-xl border-2 bg-white p-4  md:flex md:flex-col"
-                id="message-box"
-              >
-                <div className="flex gap-8">
-                  <h3 className="text-sm font-semibold decoration-4 hover:text-blue-700 hover:underline hover:underline-offset-[10px]">
-                    Reply
-                  </h3>
-                  <h3 className="text-sm font-semibold decoration-4 hover:text-blue-700 hover:underline hover:underline-offset-[10px]">
-                    Note
-                  </h3>
-                </div>
-                <textarea
-                  className="resize-none outline-none"
-                  name="message"
-                  id="message"
-                  placeholder="message"
-                ></textarea>
-
-                <div className="flex flex-row justify-between">
-                  <div className="flex flex-row space-x-4 overflow-hidden">
-                    <button className="hover:text-blue-600">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-                        ></path>
-                      </svg>
-                    </button>
-
-                    <button className="hover:text-blue-600">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                        ></path>
-                      </svg>
-                    </button>
-
-                    <button className="hover:text-blue-600">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"
-                        ></path>
-                      </svg>
-                    </button>
-
-                    <button className="hover:text-blue-600">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12.75 8.25v7.5m6-7.5h-3V12m0 0v3.75m0-3.75H18M9.75 9.348c-1.03-1.464-2.698-1.464-3.728 0-1.03 1.465-1.03 3.84 0 5.304 1.03 1.464 2.699 1.464 3.728 0V12h-1.5M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
-                        ></path>
-                      </svg>
-                    </button>
-
-                    <button className="hover:text-blue-600">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                        ></path>
-                      </svg>
-                    </button>
-
-                    <button className="hover:text-blue-600">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"
-                        ></path>
-                      </svg>
-                    </button>
-
-                    <button className="hover:text-blue-600">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"
-                        ></path>
-                      </svg>
-                    </button>
-                  </div>
-
-                  <button
-                    id="send-button"
-                    className="h-10 w-24 rounded-full bg-blue-500 text-lg font-medium text-white hover:bg-blue-600 focus:border-blue-300 focus:outline-none focus:ring"
-                  >
-                    Send
-                  </button>
-                </div>
-              </div>
+            <div className="relative z-0 h-screen flex-auto space-y-4 overflow-y-auto p-4 pb-32">
+              <p>hello</p>
+              <p>hi</p>
+              <p>hey</p>
+              <p>hola</p>
+              <p>welcome</p>
+              <p>hello</p>
+              <p>hi</p>
+              <p>hey</p>
+              <p>hola</p>
+              <p>welcome</p>
+              <p>hello</p>
+              <p>hi</p>
+              <p>hey</p>
+              <p>hola</p>
+              <p>welcome</p>
+              <p>hello</p>
+              <p>hi</p>
+              <p>hey</p>
+              <p>hola</p>
+              <p>welcome</p>
+              <p>hello</p>
+              <p>hi</p>
+              <p>hey</p>
+              <p>hola</p>
+              <p>welcome</p>
+              <p>hello</p>
+              <p>hi</p>
+              <p>hey</p>
+              <p>hola</p>
+              <p>welcome</p>
+              <p>hello</p>
+              <p>hi</p>
+              <p>hey</p>
+              <p>hola</p>
+              <p>welcome</p>
+              <p>hello</p>
+              <p>hi</p>
+              <p>hey</p>
+              <p>hola</p>
+              <p>welcome</p>
             </div>
 
             <div
-              className="w-84 fixed bottom-1 left-0 right-0 mx-1 flex h-20 flex-row items-center justify-between bg-transparent px-2 md:hidden"
+              className="self-centers relative z-10 mx-2 mb-2 hidden h-40 justify-between rounded-xl border-2 bg-white p-4  md:flex md:flex-col"
+              id="message-box"
+            >
+              <div className="mb-2 flex gap-8">
+                <h3 className="text-sm font-semibold decoration-4 hover:text-blue-700 hover:underline hover:underline-offset-8">
+                  Reply
+                </h3>
+                <h3 className="text-sm font-semibold decoration-4 hover:text-blue-700 hover:underline hover:underline-offset-8">
+                  Note
+                </h3>
+              </div>
+              <textarea
+                className="mt-2 resize-y leading-4 outline-none"
+                name="message"
+                id="message"
+                placeholder="message"
+              ></textarea>
+
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-row space-x-4 overflow-hidden">
+                  <button className="hover:text-blue-600">
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+                      ></path>
+                    </svg>
+                  </button>
+
+                  <button className="hover:text-blue-600">
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                      ></path>
+                    </svg>
+                  </button>
+
+                  <button className="hover:text-blue-600">
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"
+                      ></path>
+                    </svg>
+                  </button>
+
+                  <button className="hover:text-blue-600">
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12.75 8.25v7.5m6-7.5h-3V12m0 0v3.75m0-3.75H18M9.75 9.348c-1.03-1.464-2.698-1.464-3.728 0-1.03 1.465-1.03 3.84 0 5.304 1.03 1.464 2.699 1.464 3.728 0V12h-1.5M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
+                      ></path>
+                    </svg>
+                  </button>
+
+                  <button className="hover:text-blue-600">
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                      ></path>
+                    </svg>
+                  </button>
+
+                  <button className="hover:text-blue-600">
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"
+                      ></path>
+                    </svg>
+                  </button>
+
+                  <button className="hover:text-blue-600">
+                    <svg
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+
+                <button
+                  id="send-button"
+                  className="h-10 w-24 rounded-full bg-blue-500 text-lg font-medium text-white hover:bg-blue-600 focus:border-blue-300 focus:outline-none focus:ring"
+                >
+                  Send
+                </button>
+              </div>
+            </div>
+            <div
+              className="w-84 fixed bottom-0 left-0 right-0 z-10 mx-1 flex h-20 flex-row items-center justify-between bg-transparent px-2 md:hidden"
               id="moble-message-box"
             >
               <div className="relative mr-1 flex h-12 w-[70%] flex-auto flex-row items-center  justify-between space-x-2 rounded-full bg-black px-2 text-white">
@@ -925,7 +903,405 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative hidden h-screen w-1/4 flex-none bg-red-200 lg:block">Conversation Details</div>
+          {/* Conversation details */}
+          <div className="relative hidden h-screen w-1/4 flex-none bg-gray-200 lg:block">
+            <div className="relative z-10 flex h-16 w-full flex-row items-center justify-between self-center  bg-white p-2 py-2">
+              <svg
+                className="h-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+                ></path>
+              </svg>
+
+              <div className="flex flex-row items-center space-x-1">
+                <img src="images/lucas.jpg" alt="Lucas" className="h-6 w-6 rounded-full" />
+                <p className="text-xl font-semibold">You</p>
+                <svg
+                  className="h-6 w-4"
+                  fill="black"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+                </svg>
+              </div>
+              <svg
+                className="h-6 w-6 hover:cursor-pointer hover:text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                ></path>
+              </svg>
+              <svg
+                className="h-6 w-6 hover:cursor-pointer hover:text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <svg
+                className="h-6 w-6 hover:cursor-pointer hover:text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+              </svg>
+            </div>
+
+            <div className="m-1 flex h-1/3 flex-none flex-col justify-center overflow-hidden rounded-lg bg-gray-100 p-4">
+              <div className="mb-2 flex flex-row justify-between">
+                <p className="h-6 font-semibold">Conversation details</p>
+
+                <button className="hover:text-blue-600">
+                  <svg
+                    className=" h-6 w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
+                    ></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <p className="text-gray-500">Urgency</p>
+              <p className="text-gray-500">
+                Product area <span className="ml-2 text-black">Billing</span>
+              </p>
+              <p className="text-gray-500">
+                Next step <span className="ml-2">Add</span>
+              </p>
+              <p className="text-gray-500">
+                Brand <span className="ml-2 text-black">Projectmap</span>
+              </p>
+              <p className="text-gray-500">
+                ID <span className="ml-2 text-black">27285816428</span>
+              </p>
+            </div>
+
+            <div className="my-2 flex flex-row justify-between px-4">
+              <button className="text-sm font-semibold text-black">Related</button>
+
+              <button className="text-sm font-semibold text-gray-500">Customize</button>
+            </div>
+
+            <div className="flex h-screen flex-col overflow-y-auto bg-gray-200 px-2 pb-80">
+              <div className="m-1 flex flex-none flex-col justify-center rounded-lg bg-gray-100 p-4 px-2">
+                <div className="mb-2 flex flex-row items-center space-x-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-center text-sm  font-semibold text-white">
+                    LM
+                  </div>
+                  <p className="text-sm font-semibold">Lucas Mmaduabuchi</p>
+                </div>
+
+                <div className="mt-2 flex flex-row items-center space-x-2">
+                  <svg
+                    className="h-7 w-4 text-gray-500"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                    ></path>
+                  </svg>
+
+                  <p className="text-gray-500">
+                    City <span className="ml-2 text-black">London</span>
+                  </p>
+                </div>
+
+                <div className="mt-2 flex flex-row items-center space-x-2">
+                  <svg
+                    className="h-6 w-4 text-gray-700"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+
+                  <p className="text-gray-500">
+                    Local time <span className="ml-2 text-black">10:19PM</span>
+                  </p>
+                </div>
+
+                <div className="mt-2 flex flex-row items-center space-x-2">
+                  <svg
+                    className="h-6 w-4 text-gray-700"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                    ></path>
+                  </svg>
+
+                  <p className="text-gray-500">
+                    Type<span className="ml-2 text-black">User</span>
+                  </p>
+                </div>
+
+                <div className="mt-2 flex flex-row items-center space-x-2 ">
+                  <svg
+                    className="h-6 w-4 text-gray-700"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"
+                    ></path>
+                  </svg>
+
+                  <p className="truncate text-gray-500">
+                    Email<span className="ml-2 text-black">lucas&#64;email.com</span>
+                  </p>
+                </div>
+
+                <div className="my-2 flex flex-row items-center space-x-2">
+                  <svg
+                    className="h-6 w-4 text-gray-700"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                    ></path>
+                  </svg>
+
+                  <p className="truncate text-gray-500">
+                    Phone<span className="ml-2">Unknown</span>
+                  </p>
+                </div>
+                <p className="truncate text-gray-700">Show 29 more</p>
+              </div>
+
+              <div className="m-1 flex flex-none flex-col justify-center rounded-lg bg-gray-100 p-4">
+                <div className="mb-2 flex flex-row justify-between">
+                  <p className="h-6 font-semibold">Latest Conversations</p>
+                </div>
+
+                <div className="mb-1 flex flex-row items-center space-x-2">
+                  <img src="images/lucas.jpg" alt="" className="h-6 w-6 rounded-full" />
+                  <p className="text-sm font-semibold text-black">Open with Nikolas</p>
+                </div>
+                <div className="flex flex-row justify-between overflow-hidden">
+                  <p className="truncate text-sm text-gray-500">I have some issues sending emails</p>
+                  <div>
+                    <h3 className="text-sm text-gray-700">5d</h3>
+                  </div>
+                </div>
+              </div>
+
+              <div className="m-1 flex flex-none flex-col justify-center rounded-lg bg-gray-100 p-4">
+                <div className="mb-2 flex flex-row justify-between">
+                  <p className="h-6 font-semibold">User tags</p>
+                </div>
+
+                <div className="mb-1 flex flex-row justify-between">
+                  <div className="flex items-center justify-around rounded border-2 border-solid px-1 py-1">
+                    <svg
+                      className="h-4 w-4"
+                      fill="none"
+                      stroke="black"
+                      strokeWidth="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6"></path>
+                    </svg>
+
+                    <p className="text-[10px] font-semibold text-gray-500">Add tags</p>
+                  </div>
+
+                  <div className="flex items-center space-x-1 rounded border-2 border-solid px-1 py-1">
+                    <svg
+                      className="h-4 w-4 text-gray-500"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
+                      ></path>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z"></path>
+                    </svg>
+
+                    <p className="text-[10px] font-semibold text-gray-500">VIP SWE</p>
+
+                    <svg
+                      className="h-5 w-5 text-gray-500"
+                      fill="currentColor"
+                      stroke="white"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="mb-1 flex flex-row justify-between">
+                  <div className="flex items-center space-x-1 rounded border-2 border-solid px-1 py-1">
+                    <svg
+                      className="h-4 w-4 text-gray-500"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
+                      ></path>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z"></path>
+                    </svg>
+
+                    <p className="text-[10px] font-semibold text-gray-500">cool</p>
+
+                    <svg
+                      className="h-5 w-5 text-gray-500"
+                      fill="currentColor"
+                      stroke="white"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                  </div>
+
+                  <div className="flex items-center space-x-1 rounded border-2 border-solid px-1 py-1">
+                    <svg
+                      className="h-4 w-4 text-gray-500"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
+                      ></path>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z"></path>
+                    </svg>
+
+                    <p className="text-[10px] font-semibold text-gray-500">feedback</p>
+
+                    <svg
+                      className="h-5 w-5 text-gray-500"
+                      fill="currentColor"
+                      stroke="white"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-sm font-semibold text-gray-700">Show 5 hidden</p>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </>
