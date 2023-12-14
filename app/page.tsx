@@ -6,12 +6,41 @@ import React, { useRef } from 'react';
 export default function Home() {
   const chatRef = useRef<HTMLDivElement | null>(null);
   const inboxRef = useRef<HTMLDivElement | null>(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
   function toggleChatBox() {
-    if (chatRef.current && inboxRef.current) {
-      chatRef.current.classList.toggle('hidden');
-      inboxRef.current.classList.toggle('hidden');
+    if (window.innerWidth < 1024) {
+      if (chatRef.current && inboxRef.current) {
+        chatRef.current.classList.toggle('hidden');
+        inboxRef.current.classList.toggle('hidden');
+      }
     }
   }
+
+  function getElement(elementId: string): HTMLElement | null {
+    return dropdownRef.current?.querySelector(`#${elementId}`)!;
+  }
+
+  function toggleDropdown(item: string) {
+    if (!item || !dropdownRef.current) return;
+    const styles = {
+      [`${item}-button`]: 'text-gray-700',
+      [`${item}-button`]: 'text-blue-700',
+      [`${item}-svg`]: 'transform',
+      [`${item}-svg`]: 'rotate-90',
+      [`${item}-menu`]: 'hidden',
+    };
+    for (const elementId in styles) {
+      const element = getElement(elementId);
+      if (element) element.classList.toggle(styles[elementId]);
+    }
+  }
+
+  const handleDropdownClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const conversationId = event.currentTarget.dataset.dropdownButton!;
+    toggleDropdown(conversationId);
+  };
+
   return (
     <>
       <main className="fixed flex max-h-screen w-full flex-col  bg-gray-100 text-black md:flex-row">
@@ -210,11 +239,12 @@ export default function Home() {
           </div>
         </nav>
 
+        {/* second-division */}
         <div
-          className="hidden max-h-screen w-full flex-none border-2 border-l-0 border-solid border-gray-200 bg-gray-100 md:block md:w-56"
+          className="hidden max-h-screen w-full flex-none border-2 border-l-0 border-solid border-gray-200 bg-gray-100 px-2 md:block md:w-56"
           id="second-division"
         >
-          <div className="flex h-16 flex-row items-center justify-between bg-gray-100 px-4 py-2">
+          <div className="flex h-16 flex-row items-center justify-between bg-gray-100 py-2">
             <h1 className="flex-auto text-3xl font-bold text-slate-900">Inbox</h1>
 
             <button className="flex-none cursor-pointer">
@@ -235,12 +265,242 @@ export default function Home() {
               </svg>
             </button>
           </div>
+
+          {/* dropdown */}
+          <div id="drop-down" className="pt-1" ref={dropdownRef}>
+            <button
+              onClick={handleDropdownClick}
+              id="conversation-button"
+              type="button"
+              className="relative  mb-2 inline-flex w-full items-center pt-2 text-sm font-bold text-gray-700 focus:outline-none"
+              data-dropdown-button={'conversation'}
+            >
+              Conversations
+              <svg
+                id="conversation-svg"
+                className="ml-2 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+              </svg>
+            </button>
+            <div
+              className="relative right-0 mb-2 hidden origin-top-right"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="options-menu"
+              id="conversation-menu"
+            >
+              <div className="flex items-center py-1" role="none">
+                <a
+                  href="#"
+                  className="inline-flex w-full items-center space-x-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                >
+                  <img src="images/lucas.jpg" alt="" className="h-6 w-6 rounded-full" />
+                  <p className="text-sm font-medium text-gray-900">You</p>
+                </a>
+                <p className="justify-end text-sm font-medium text-gray-600">5</p>
+              </div>
+
+              <div className="flex items-center pb-1" role="none">
+                <a
+                  href="#"
+                  className="inline-flex w-full items-center space-x-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                >
+                  <svg
+                    className="h-5 w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"
+                    ></path>
+                  </svg>
+                  <p className="text-sm font-medium text-gray-900">Mentions</p>
+                </a>
+                <p className="justify-end text-sm font-medium text-gray-400">0</p>
+              </div>
+
+              <div className="flex items-center pb-1" role="none">
+                <a
+                  href="#"
+                  className="inline-flex w-full items-center space-x-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                >
+                  <svg
+                    className="h-5 w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"
+                    ></path>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"
+                    ></path>
+                  </svg>
+                  <p className="text-sm font-medium text-gray-900">Premium</p>
+                </a>
+                <p className="justify-end text-sm font-medium text-gray-600">20</p>
+              </div>
+
+              <div className="flex items-center pb-1" role="none">
+                <a
+                  href="#"
+                  className="inline-flex w-full items-center space-x-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                >
+                  <svg
+                    className="h-5 w-6"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
+                    ></path>
+                  </svg>
+                  <p className="text-sm font-medium text-gray-900">Urgent VIP</p>
+                </a>
+                <p className="justify-end text-sm font-medium text-gray-600">196</p>
+              </div>
+
+              <div className="flex items-center pb-1" role="none">
+                <a
+                  href="#"
+                  className="inline-flex w-full items-center space-x-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                >
+                  <svg
+                    className="h-5 w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M3.124 7.5A8.969 8.969 0 015.292 3m13.416 0a8.969 8.969 0 012.168 4.5"
+                    ></path>
+                  </svg>
+                  <p className="text-sm font-medium text-gray-900">Waiting 20m</p>
+                </a>
+                <p className="justify-end text-sm font-medium text-gray-400">0</p>
+              </div>
+              <div className="flex flex-row items-center justify-between px-1">
+                <p className="text-sm font-medium text-gray-400">Show 74 hidden</p>
+                <svg
+                  className="h-5 w-6 justify-end text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
+                  ></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="relative  my-2 inline-flex w-full items-center pt-2 text-sm font-bold text-gray-700 focus:outline-none"
+            >
+              Automation
+              <svg
+                className="ml-2 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              className="relative  my-2 inline-flex w-full items-center pt-2 text-sm font-bold text-gray-700 focus:outline-none"
+            >
+              Your Preferences
+              <svg
+                className="ml-2 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              className="relative  mb-4 mt-2 inline-flex w-full items-center pt-2 text-sm font-bold text-gray-700 focus:outline-none"
+            >
+              Reports
+              <svg
+                className="ml-2 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+              </svg>
+            </button>
+            <a href="#" className="text-sm font-bold text-gray-700">
+              Start guide
+            </a>
+          </div>
         </div>
 
+        {/* third-division */}
         <div
           className="flex max-h-screen flex-auto flex-col overflow-hidden bg-yellow-200 md:flex md:flex-row"
           id="third-divison"
         >
+          {/* inbox-messages */}
           <div
             className="relative flex w-screen flex-none flex-col overflow-hidden rounded-r-none  rounded-t bg-white md:w-1/4"
             ref={inboxRef}
@@ -555,42 +815,16 @@ export default function Home() {
                   <h3 className="truncate text-sm text-black">I have some issues sending an email</h3>
                 </div>
               </div>
-
-              <div
-                id="message-container"
-                className="flex flex-col border-b-2 p-4 pb-2 hover:border-l-2 hover:border-l-blue-700 hover:bg-blue-50"
-              >
-                <div className="flex flex-row items-center justify-between">
-                  <div className="flex flex-row items-center space-x-2">
-                    <div
-                      id="circle"
-                      className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-sm font-semibold text-white"
-                    >
-                      <h3>NT</h3>
-                    </div>
-                    <strong className="text-xl text-black">Nikolas Tesla</strong>
-                  </div>
-
-                  <div>
-                    <h3 className="text-sm text-gray-700">5d</h3>
-                  </div>
-                </div>
-
-                <div className="flex flex-row items-center space-x-2 pt-6">
-                  <img className="h-6 w-6 rounded-full bg-blue-500" src="images/lucas.jpg"></img>
-                  <h3 className="truncate text-sm text-black">I have some issues sending an email</h3>
-                </div>
-              </div>
             </div>
           </div>
 
           {/* message-chat-inbox-section */}
           <div
-            className="relative hidden h-screen flex-none flex-col justify-center bg-gray-200 md:flex lg:flex-auto"
+            className="hidden h-screen flex-col justify-center bg-gray-200 md:flex md:flex-auto lg:flex-auto"
             id="chat-box"
             ref={chatRef}
           >
-            <div className="relative z-10 flex h-16 w-full  flex-none flex-row items-center justify-evenly self-center bg-white p-4 py-2 sm:justify-between">
+            <div className="fixed left-0 right-0 top-0 z-10 flex h-16 w-full flex-none  flex-row items-center justify-evenly self-center bg-white p-4 py-2 sm:justify-between md:static">
               <div className="flex flex-col">
                 <strong className="text-sm font-semibold hover:text-blue-700">Lucas Mmaduabuchi</strong>
 
@@ -606,14 +840,14 @@ export default function Home() {
                   className="h-4 w-4 text-gray-700"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                   ></path>
                 </svg>
@@ -621,7 +855,6 @@ export default function Home() {
                 <p className="text-sm text-gray-700">Reply in 15m</p>
               </div>
             </div>
-
             <div className="relative z-0 h-screen flex-auto space-y-4 overflow-y-auto p-4 pb-32">
               <p>hello</p>
               <p>hi</p>
