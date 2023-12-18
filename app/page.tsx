@@ -24,11 +24,11 @@ export default function Home() {
   function toggleDropdown(item: string) {
     if (!item || !dropdownRef.current) return;
     const styles = {
-      [`${item}-button`]: 'text-gray-700',
-      [`${item}-button`]: 'text-blue-700',
       [`${item}-svg`]: 'transform',
       [`${item}-svg`]: 'rotate-90',
       [`${item}-menu`]: 'hidden',
+      [`${item}-button`]: 'text-gray-700',
+      [`${item}-button`]: 'text-blue-700',
     };
     for (const elementId in styles) {
       const element = getElement(elementId);
@@ -45,7 +45,7 @@ export default function Home() {
     <>
       <main className="fixed flex max-h-screen w-full flex-col  bg-gray-100 text-black md:flex-row">
         <nav
-          className="hidden h-screen max-h-screen w-full flex-none items-center justify-between overflow-y-auto bg-gray-200 md:flex md:w-16 md:flex-col"
+          className="hidden max-h-screen flex-none items-center justify-between overflow-y-auto bg-gray-200 md:flex md:w-16 md:flex-col"
           id="first-division"
         >
           <div className="flex flex-col items-center space-y-4 p-4">
@@ -303,9 +303,9 @@ export default function Home() {
                   role="menuitem"
                 >
                   <img src="images/lucas.jpg" alt="" className="h-6 w-6 rounded-full" />
-                  <p className="text-sm font-medium text-gray-900">You</p>
+                  <p className="text-sm font-medium text-blue-700">You</p>
                 </a>
-                <p className="justify-end text-sm font-medium text-gray-600">5</p>
+                <p className="justify-end text-sm font-medium text-blue-600">5</p>
               </div>
 
               <div className="flex items-center pb-1" role="none">
@@ -502,7 +502,7 @@ export default function Home() {
         >
           {/* inbox-messages */}
           <div
-            className="relative flex w-screen flex-none flex-col overflow-hidden rounded-r-none  rounded-t bg-white md:w-1/4"
+            className="relative flex flex-none flex-col overflow-hidden rounded-r-none  rounded-t bg-white md:w-1/4"
             ref={inboxRef}
           >
             <nav
@@ -657,7 +657,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div id="message-nav" className="mt-2 flex h-screen flex-col space-y-1 overflow-y-auto pb-32 pt-4 md:pb-2">
+            <div
+              id="message-nav"
+              className="mt-2 flex max-h-screen flex-col space-y-1 overflow-y-auto pb-32 pt-4 md:pb-2"
+            >
               <a
                 id="message-container"
                 className="md:message-selected flex flex-col border-b-2 p-4 pb-2 hover:border-l-2 hover:border-l-blue-700 hover:bg-blue-50"
@@ -820,7 +823,7 @@ export default function Home() {
 
           {/* message-chat-inbox-section */}
           <div
-            className="hidden h-screen flex-col justify-center bg-gray-200 md:flex md:flex-auto lg:flex-auto"
+            className="hidden h-screen flex-col justify-center bg-gray-200 md:flex md:flex-auto"
             id="chat-box"
             ref={chatRef}
           >
@@ -855,47 +858,22 @@ export default function Home() {
                 <p className="text-sm text-gray-700">Reply in 15m</p>
               </div>
             </div>
-            <div className="relative z-0 h-screen flex-auto space-y-4 overflow-y-auto p-4 pb-32">
-              <p>hello</p>
-              <p>hi</p>
-              <p>hey</p>
-              <p>hola</p>
-              <p>welcome</p>
-              <p>hello</p>
-              <p>hi</p>
-              <p>hey</p>
-              <p>hola</p>
-              <p>welcome</p>
-              <p>hello</p>
-              <p>hi</p>
-              <p>hey</p>
-              <p>hola</p>
-              <p>welcome</p>
-              <p>hello</p>
-              <p>hi</p>
-              <p>hey</p>
-              <p>hola</p>
-              <p>welcome</p>
-              <p>hello</p>
-              <p>hi</p>
-              <p>hey</p>
-              <p>hola</p>
-              <p>welcome</p>
-              <p>hello</p>
-              <p>hi</p>
-              <p>hey</p>
-              <p>hola</p>
-              <p>welcome</p>
-              <p>hello</p>
-              <p>hi</p>
-              <p>hey</p>
-              <p>hola</p>
-              <p>welcome</p>
-              <p>hello</p>
-              <p>hi</p>
-              <p>hey</p>
-              <p>hola</p>
-              <p>welcome</p>
+
+            <div className="mt-12 max-h-screen flex-auto space-y-4 overflow-y-auto p-4 pb-20" id="chat-container">
+              <div className="flex space-y-1 p-2" id="received-message">
+                <div className="flex space-x-4">
+                  <div className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-blue-600 text-sm font-semibold text-white">
+                    LM
+                  </div>
+                  <div className="space-y-0">
+                    <div className="max-w-[60%] rounded-md bg-blue-400 p-2">
+                      Hello there, I&apos;d like to subscribe to the premium package.
+                    </div>
+                    <p className="text-sm italic text-gray-500"> seen 2m ago</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
             <div
